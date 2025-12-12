@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    html { visibility: hidden; }
+    </style>
+    <script>
+    const s = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', s);
+    document.documentElement.style.visibility = 'visible';
+    </script>
+</head>
+
+<body>
+<header>
+    <nav class="nav">
+        <div class="logo">MyPortfolio</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a class="active" href="skills.html">Skills</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button id="themeToggle" class="toggle-btn">🌓</button>
+    </nav>
+</header>
+
+<section class="container fade-in">
+    <h1 class="page-title">Skills</h1>
+
+    <div class="skills-grid">
+        <div class="skill-card">HTML / CSS</div>
+        <div class="skill-card">JavaScript</div>
+        <div class="skill-card">Python</div>
+        <div class="skill-card">Java</div>
+        <div class="skill-card">C</div>
+        <div class="skill-card">SQL</div>
+        <div class="skill-card">Problem Solving</div>
+        <div class="skill-card">AI/ML</div>
+    </div>
+</section>
+
+<script src="theme.js"></script>
+</body>
+</html>

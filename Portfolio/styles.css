@@ -1,0 +1,370 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+body > *:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------------- General Reset ---------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
+}
+
+/* ---------------- Theme Variables ---------------- */
+html[data-theme="light"] {
+    --bg: #ffffff;
+    --text: #111111;
+    --card: #f5f5f5;
+    --border: #ddd;
+    --accent1: #e63946;   /* red accent */
+    --accent2: #1d3557;   /* deep blue accent */
+}
+
+html[data-theme="dark"] {
+    --bg: #0f0f0f;
+    --text: #e4e4e4;
+    --card: #1a1a1a;
+    --border: #333;
+    --accent1: #457b9d;   /* blue accent */
+    --accent2: #2a9d8f;   /* green accent */
+}
+
+/* ---------------- Background Gradients & Floating Blobs ---------------- */
+html[data-theme="light"] body {
+    background: linear-gradient(135deg, #f0f4f8 0%, #e8edf3 40%, #ffffff 100%);
+}
+
+html[data-theme="dark"] body {
+    background: linear-gradient(135deg, #0a0a0a 0%, #121212 40%, #1a1a1a 100%);
+}
+
+body::before,
+
+body::before {
+    content: '';
+    position: fixed;
+    top:0; left:0;
+    width:210%; height:210%;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AAmoB9F+0pQAAAABJRU5ErkJggg==') repeat;
+    opacity: 0.250;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 70%;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::before {
+    top: -350px;
+    left: -350px;
+    background: radial-gradient(circle, var(--accent2) 0%, transparent 70%);
+    animation: floatTopLeft 25s linear infinite;
+}
+
+body::after {
+    bottom: -150px;
+    right: -150px;
+    background: radial-gradient(circle, var(--accent1) 0%, transparent 70%);
+    animation: floatBottomRight 30s linear infinite;
+}
+
+@keyframes floatTopLeft {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(20px, 30px) rotate(45deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes floatBottomRight {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-20px, -30px) rotate(-45deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+body > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ---------------- Navbar ---------------- */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+.nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+.nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+.nav a.active,
+.nav a:hover {
+    border-color: var(--accent2);
+}
+.toggle-btn {
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* ---------------- Hero Section ---------------- */
+.hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+}
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.hero h1 {
+    font-size: 3rem;
+}
+.hero p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+.btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: var(--accent2);
+    color: var(--bg);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.btn:hover {
+    background: var(--accent1);
+    opacity: 0.9;
+}
+
+/* ---------------- Fade Animations ---------------- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fade 0.6s forwards;
+}
+.delay-1 {
+    animation-delay: 0.2s;
+}
+.delay-2 {
+    animation-delay: 0.4s;
+}
+@keyframes fade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------------- Container ---------------- */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 60px 20px;
+}
+.page-title {
+    margin-bottom: 30px;
+}
+
+/* ---------------- Skills Grid ---------------- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+.skill-card {
+    background: var(--card);
+    padding: 18px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    text-align: center;
+    font-weight: 500;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.skill-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent2);
+}
+
+/* ---------------- Projects List ---------------- */
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 12px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.project-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent2);
+}
+
+/* ---------------- Contact Page ---------------- */
+.contact-info p {
+    margin: 4px 0;
+    opacity: 0.9;
+}
+.contact-info a {
+    color: var(--text);
+    text-decoration: underline;
+}
+.linktree {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 30px 0;
+}
+.link-btn {
+    padding: 14px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.2s, opacity 0.2s, border-color 0.2s;
+}
+.link-btn:hover {
+    transform: translateY(-4px);
+    opacity: 0.85;
+    border-color: var(--accent2);
+}
+.contact-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.contact-form input,
+.contact-form textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+}
+
+/* ---------------- Accordion / Certifications ---------------- */
+.accordion-item {
+    background: var(--card);
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    opacity: 0;
+    animation: slideInLeft 0.5s forwards;
+}
+.accordion-item:nth-child(1) { animation-delay: 0.1s; }
+.accordion-item:nth-child(2) { animation-delay: 0.25s; }
+.accordion-item:nth-child(3) { animation-delay: 0.4s; }
+.accordion-item:nth-child(4) { animation-delay: 0.55s; }
+.accordion-item:nth-child(5) { animation-delay: 0.7s; }
+
+.accordion-header {
+    width: 100%;
+    padding: 18px;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    text-align: left;
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.2s, border-left 0.3s;
+}
+.accordion-header:hover {
+    background: var(--border);
+    border-left: 4px solid var(--accent2);
+}
+.accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 18px;
+    transition: max-height 0.35s ease;
+}
+.accordion-body p {
+    padding: 15px 0;
+}
+
+/* ---------------- Slide-in Left Animation ---------------- */
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.project-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.project-link .project-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-link .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.project-card {
+    cursor: pointer;
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-item.active .accordion-body {
+  max-height: 300px; /* adjust as needed */
+}
