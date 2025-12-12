@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    html { visibility: hidden; }
+    </style>
+    <script>
+    const s = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', s);
+    document.documentElement.style.visibility = 'visible';
+    </script>
+</head>
+
+<body>
+<header>
+    <nav class="nav">
+        <div class="logo">MyPortfolio</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a class="active" href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button id="themeToggle" class="toggle-btn">🌓</button>
+    </nav>
+</header>
+
+<section class="container fade-in">
+    <h1 class="page-title">Projects</h1>
+
+    <div class="project-list">
+
+        <a href="https://github.com/DeepakDS07/Web-Portfolio" class="project-link" target="_blank">
+            <div class="project-card">
+                <h3>Portfolio Website</h3>
+                <p>A modern, responsive, dark-mode enabled portfolio built using HTML/CSS and JavaScript.</p>
+            </div>
+        </a>
+
+        <a href="https://github.com/DeepakDS07/SmartReg" class="project-link" target="_blank">
+            <div class="project-card">
+                <h3>SmartReg</h3>
+                <p>Java-based event registration management system with GUI made using JavaSwing.</p>
+            </div>
+        </a>
+
+        <a href="https://github.com/DeepakDS07/Heart-Disease-Prediction-ML" class="project-link" target="_blank">
+            <div class="project-card">
+                <h3>Heart-Disease-Prediction-ML</h3>
+                <p>Python-based Heart-Disease Prediction ML</p>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+<script src="theme.js"></script>
+</body>
+</html>
